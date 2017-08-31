@@ -2,6 +2,8 @@
 	$user_answers = $_POST;
 	$tr_answers = json_decode(file_get_contents($_GET['testfile']), true)['answers'];
 	$primary_message = 'Ваш результат:';
+	$total_count = 0;
+	$passed_count = 0;
 
 	foreach ($_POST as $us_key => $us_value) {
 		$total_count++;

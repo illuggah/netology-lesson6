@@ -34,7 +34,7 @@
 				$get_catalog = scandir('uploaded_tests/');
 				foreach ($get_catalog as $key => $value) {
 					if ($value !== '.' && $value !== '..') {
-						echo '<a href="test.php?testfile=uploaded_tests/' . $value . '">'. (json_decode(file_get_contents('uploaded_tests/' . $value), true))['testname'] .'</a><br>' . PHP_EOL;
+						echo '<a href="test.php?testfile=uploaded_tests/' . $value . '">'. json_decode(file_get_contents('uploaded_tests/' . $value), true)['testname'] .'</a><br>' . PHP_EOL;
 					}
 				}
 			?>	

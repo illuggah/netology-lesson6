@@ -5,35 +5,41 @@
 	$total_count = 0;
 	$passed_count = 0;
 
-	foreach ($_POST as $us_key => $us_value) {
-		$total_count++;
-		if ($us_value == $tr_answers[$us_key]) {
-			$passed_count++;
+		if (isset($_POST)) {
+			foreach ($_POST as $us_key => $us_value) {
+			$total_count++;
+			if ($us_value == $tr_answers[$us_key]) {
+				$passed_count++;
+			}
 		}
-	}
 
-	$passed_count = $passed_count . ' / ';
+		$passed_count = $passed_count . ' / ';
 
-	if ($total_count == 0) {$total_count = .1;}
+		if ($total_count == 0) {$total_count = .1;}
 
-	if (($passed_count/$total_count)*100 < 45) {
-		$primary_message = '';
-		$secondary_message = '<h3 class="text-danger">Тест не пройден</h3>';
-		$passed_count = '';
-		$total_count = '';}
-	elseif (($passed_count/$total_count)*100 < 75) {
-		$secondary_message = '<h3 class="text-warning">Удовлетворительно</h3>';}
-	elseif (($passed_count/$total_count)*100 < 90) {
-		$secondary_message = '<h3 class="text-success">Хорошо</h3>';}
-	elseif (($passed_count/$total_count)*100 > 90) {
-		$secondary_message = '<h3 class="text-success">Отлично!</h3>';}
+		if (($passed_count/$total_count)*100 < 45) {
+			$primary_message = '';
+			$secondary_message = '<h3 class="text-danger">Тест не пройден</h3>';
+			$passed_count = '';
+			$total_count = '';}
+		elseif (($passed_count/$total_count)*100 < 75) {
+			$secondary_message = '<h3 class="text-warning">Удовлетворительно</h3>';}
+		elseif (($passed_count/$total_count)*100 < 90) {
+			$secondary_message = '<h3 class="text-success">Хорошо</h3>';}
+		elseif (($passed_count/$total_count)*100 > 90) {
+			$secondary_message = '<h3 class="text-success">Отлично!</h3>';}
 
-
-	if (count($tr_answers) > count($user_answers)) {
+		if (count($tr_answers) > count($user_answers)) {
+			$primary_message = '';
+			$secondary_message = '<h3 class="text-danger">Ответьте на все вопросы!</h3>';
+			$passed_count = '';
+			$total_count = '';}
+	} else {
 		$primary_message = '';
 		$secondary_message = '<h3 class="text-danger">Ответьте на все вопросы!</h3>';
 		$passed_count = '';
-		$total_count = '';}
+		$total_count = '';
+	}
 ?>
 
 <!DOCTYPE html>

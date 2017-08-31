@@ -1,5 +1,4 @@
 <?php
-	$user_answers = $_POST;
 	$tr_answers = json_decode(file_get_contents($_GET['testfile']), true)['answers'];
 	$primary_message = 'Ваш результат:';
 	$total_count = 0;
@@ -12,6 +11,8 @@
 				$passed_count++;
 			}
 		}
+			
+		$user_answers = $_POST;
 
 		$passed_count = $passed_count . ' / ';
 
